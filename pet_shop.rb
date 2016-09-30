@@ -10,14 +10,39 @@ def add_or_remove_cash(ammount, cash)
   ammount[:admin][:total_cash] += cash
 end
 
-def pets_sold(pets)
-  pets[:admin][:pets_sold]
+def pets_sold(pet_shop)
+  pet_shop[:admin][:pets_sold]
 end
 
-def increase_pets_sold(pets, pets_sold)
-  pets[:admin][:pets_sold] += pets_sold
+def increase_pets_sold(pet_shop, pets_sold)
+  pet_shop[:admin][:pets_sold] += pets_sold
 end
 
-def stock_count(pets)
-  pets[:pets].count
+def stock_count(pet_shop)
+  pet_shop[:pets].count
 end
+
+def pets_by_breed(pet_shop, breed)
+  
+  pet_count = []
+
+  for pet in pet_shop[:pets]
+    pet_count << pet if pet[:breed] == breed
+  end
+
+  return pet_count
+
+end
+
+def find_pet_by_name(pet_shop, pet_name)
+
+  pets = []
+
+  for pet in pet_shop[:pets]
+    pets << pet if pet[:name] == pet_name
+  end
+
+  return pets[0]
+
+end
+
