@@ -90,3 +90,18 @@ end
 
 # WHAT IF THEY WANTED TO CHECK AGAINST A PET IN @PET SHOP. WOULD YOU NEED A NEW FUNCTION?
 
+def sell_pet_to_customer(pet_shop, pet, customer) 
+
+if pet == nil
+  return nil
+elsif customer[:cash] >= pet[:price]
+  customer[:pets].push(pet)
+  customer[:cash] -= pet[:price]
+  pet_shop[:admin][:total_cash] += pet[:price]
+  pet_shop[:admin][:pets_sold] += 1
+  pet_shop[:pets].delete(pet)
+else
+  return false
+end
+
+end
